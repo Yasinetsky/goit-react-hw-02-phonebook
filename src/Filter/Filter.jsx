@@ -10,8 +10,12 @@ class Filter extends Component {
   render() {
     return (
       <div>
-        <h4>Find contacts by name</h4>
-        <input onChange={this.setFilterValue}></input>
+        <h4>Найти контакты по имени</h4>
+        <input
+          type="text"
+          value={this.props.filterValue}
+          onChange={this.setFilterValue}
+        />
       </div>
     );
   }
@@ -19,5 +23,7 @@ class Filter extends Component {
 
 Filter.propTypes = {
   setFilterToState: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired,
 };
+
 export default Filter;

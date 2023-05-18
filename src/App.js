@@ -65,7 +65,10 @@ class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm onSubmitData={this.formSubmitHandler} />
         <h1>Contacts</h1>
-        <Filter setFilterToState={this.setFilterToState} />
+        <Filter
+          setFilterToState={this.setFilterToState}
+          filterValue={this.state.filter}
+        />
         <ContactList
           contacts={this.filterArr(this.state.contacts)}
           del={this.deleteContactFromContactList}
