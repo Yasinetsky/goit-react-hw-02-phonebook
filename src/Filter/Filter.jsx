@@ -10,7 +10,7 @@ class Filter extends Component {
   render() {
     return (
       <div>
-        <h4>Найти контакты по имени</h4>
+        <h4>Find contacts by name</h4>
         <input
           type="text"
           value={this.props.filterValue}
