@@ -13,12 +13,16 @@ class ContactForm extends Component {
   };
  
   handleSubmit = event => {
-    event.preventDefault();
-    let contactForAdd = { name: this.state.name, number: this.state.number };
-    this.props.onSubmitData(contactForAdd);
+  event.preventDefault();
+  let name = this.state.name.toLowerCase();
+  let capitalizedFirstName = name.charAt(0).toUpperCase() + name.slice(1);
+  let contactForAdd = { name: capitalizedFirstName, number: this.state.number };
+  this.props.onSubmitData(contactForAdd);
 
-    this.reset();
-  };
+  this.reset();
+};
+
+
 
   reset = () => {
     this.setState({ name: '', number: '' });
