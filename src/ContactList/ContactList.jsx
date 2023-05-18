@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
+
 
 class ContactList extends Component {
-  deleteId = Id => {
-    this.props.del(Id);
+  deleteId = (id) => {
+    this.props.del(id);
   };
+
   createList = () => {
-    return this.props.contacts.map(contact => {
+    return this.props.contacts.map((contact) => {
       return (
-        <li key={uuidv4()} id={contact.id}>
+        <li key={contact.id} id={contact.id}>
           {`${contact.name}: ${contact.number}`}
           <button
             data-id={contact.id}
@@ -26,10 +27,18 @@ class ContactList extends Component {
     return <ul>{this.createList()}</ul>;
   }
 }
+
 ContactList.propTypes = {
-  contacts: PropTypes.array.isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   del: PropTypes.func.isRequired,
 };
+
 ContactList.defaultProps = {
   contacts: [],
 };
